@@ -1,5 +1,5 @@
 // ✅ => is pure - always returning the same output
-// ❌ => no pure 
+// ❌ => not pure 
 
 // ❌  data object is not pure, always changing 
 // whenever the function is called it will return a different output
