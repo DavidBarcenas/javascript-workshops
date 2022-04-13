@@ -30,10 +30,29 @@ function isPrime(n) {
 
 const primes = filter(isPrime, wholes);
 
-// Helper functions
+// Map
+function map(fn, array) {
+  if(length(array) === 0) return [];
+  return [fn(head(array))].concat(map(fn, tail(array)));
+}
+
+const doubled = map(n => n * 2, wholes);
+const halved = map(n => n / 2, wholes);
+
+// Reduce
+function reduce(fn, initialValue, array) {
+  if(length(array) === 0) return initialValue;
+  const newInitialValue = fn(initialValue, head(array));
+  return reduce(fn, newInitialValue, tail(array));
+}
+
+const sum = reduce((acc, value) => acc + value, 0, wholes);
+const max = reduce((acc, value) => acc > value ? acc : value, 0, wholes);
+
+// Helper functions 
 function length(array) {
   return array.length;
-}
+} 
 
 function head(array) {
   return array[0];
