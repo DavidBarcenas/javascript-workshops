@@ -3,6 +3,7 @@
 
 :root {
     --grey: #7d7f84;
+    --light-grey: #b2b2b2;
     --dark: #0e121c;
     --red: #fd0016;
     --font-family-text: 'Open Sans', sans-serif;
@@ -33,6 +34,55 @@ a {
     text-decoration: none;
 }
 
+button {
+    border: none;
+}
+
+img {
+    display: block;
+}
+
+figure {
+    margin: 0;
+    position: relative;
+}
+
+figure::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,.7) 70%);
+    z-index: 1;
+}
+
+figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: 50px;
+}
+
+.btn-plus {
+    background: rgba(255,255,255, .1);
+    color: var(--light-grey);
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    margin-left: .25rem;
+}
+
 .flex {
     display: flex;
 }
@@ -54,6 +104,7 @@ a {
     font-weight: var(--font-weight-title2);
     color: #fff;
     margin-bottom: 2rem;
+    margin-top: 1.35rem;
 }
 
 .nav-container h1 span {
@@ -86,11 +137,6 @@ a {
 /* Main section */
 .main {
     width: 100%;
-}
-
-.main-container {
-    padding: 2rem 3rem;
-    width: 70%;
 }
 
 .main header {
@@ -138,6 +184,65 @@ a {
 .main header input:focus {
     outline: none;
     border-color: rgba(255, 255, 255, .75);
+}
+
+.main-container {
+    padding: 0 3rem;
+    width: 70%;
+}
+
+.main-container .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-container .section-title h2 {
+    color: #fff;
+    font-weight: var(--font-weight-title2);
+    font-size: 1.1rem;
+}
+
+.main-container .section-title a {
+    font-size: .85rem;
+}
+
+.main-container .section-title a i {
+    margin-left: .5rem;
+}
+
+/* Trending section */
+.main-container .trending-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1.5rem;
+}
+
+
+.main-container .trending-container .img-container img {
+    width: 100%;
+}
+
+.main-container .trending-container figcaption {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    color: #fff;
+}
+
+.main-container .trending-container figcaption h3 {
+    margin-bottom: .35rem;
+    font-weight: var(--font-weight-title2);
+}
+
+.main-container .trending-container figcaption .year,
+.main-container .trending-container figcaption .rate {
+    font-size: .85rem;
+}
+
+.main-container .trending-container figcaption .year {
+    color: var(--light-grey);
 }
 
 
