@@ -15,93 +15,104 @@
         <h1>Movies</h1>
         <div class="nav-section">
             <nav>
-                <span>Menu</span>
-                <ul>
-                    <li>
-                        <i class="fa-solid fa-house"></i>
-                        Home
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user-group"></i>
-                        Community
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-compass"></i>
-                        Discovery
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-clapperboard"></i>
-                        Coming soon
-                    </li>
-                </ul>
+                <div class="nav-group">
+                    <span>Menu</span>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-house"></i>
+                            Home
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-user-group"></i>
+                            Community
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-compass"></i>
+                            Discovery
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clapperboard"></i>
+                            Coming soon
+                        </li>
+                    </ul>
+                </div>
 
-                <span>Social</span>
-                <ul>
-                    <li>
-                        <i class="fa-solid fa-people-pulling"></i>
-                        Social
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-record-vinyl"></i>
-                        Media
-                    </li>
-                </ul>
+                <div class="nav-group">
+                    <span>Social</span>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-people-pulling"></i>
+                            Social
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-record-vinyl"></i>
+                            Media
+                        </li>
+                    </ul>
+                </div>
 
-                <span>General</span>
-                <ul>
-                    <li>
-                        <i class="fa-solid fa-gear"></i>
-                        Settings
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-power-off"></i>
-                        Log Out
-                    </li>
-                </ul>
+                <div class="nav-group">
+                    <span>General</span>
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-gear"></i>
+                            Settings
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-power-off"></i>
+                            Log Out
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </div>
 
-    <section class="main">
-        <header>
-            <nav>
-                <a href="#">Movies</a>
-                <a href="#">TV Series</a>
-                <a href="#">Anime</a>
-            </nav>
-        </header>
+    <section id="main">
+        <div class="main-container">
+            <header>
+                <nav>
+                    <a href="#">Movies</a>
+                    <a href="#">TV Series</a>
+                    <a href="#">Anime</a>
+                </nav>
+            </header>
 
-        <section>
-            <h2>Trending movies</h2>
-        </section>
+            <section>
+                <h2>Trending movies</h2>
+                <span>See All <i class="fa-solid fa-angle-right"></i></span>
+            </section>
 
-        <section>
-            <h2>Top rated</h2>
-        </section>
+            <section>
+                <h2>Top rated</h2>
+            </section>
+        </div>
+
+        <aside>
+            <form>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search"/>
+            </form>
+
+            <article>
+                <h2>
+                    <i class="fa-solid fa-arrow-up-right-dots"></i>
+                    Popular Movies
+                </h2>
+                <button>See more</button>
+            </article>
+
+            <article>
+                <h2>
+                    Your Favorites
+                    <i class="fa-solid fa-star"></i>
+                </h2>
+                <button>See more</button>
+            </article>
+        </aside>
     </section>
 
-    <aside>
-        <form>
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search"/>
-        </form>
-
-        <article>
-            <h2>
-                <i class="fa-solid fa-arrow-up-right-dots"></i>
-                Popular Movies
-            </h2>
-            <button>See more</button>
-        </article>
-
-        <article>
-            <h2>
-                Your Favorites
-                <i class="fa-solid fa-star"></i>
-            </h2>
-            <button>See more</button>
-        </article>
-    </aside>
+    <section></section>
 </div>
 
 <script src="./src/env.js"></script>

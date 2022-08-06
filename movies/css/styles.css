@@ -1,0 +1,18 @@
+/* General */
+* { box-sizing: border-box; }
+
+body {
+    background: rgb(14,18,28);
+    color: rgb(125,127,132);
+    font-size: 16px;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+}
+
+a {
+    color: #fff;
+}
