@@ -76,12 +76,12 @@ figcaption h3 {
     font-size: .9rem;
 }
 
-figcaption .year,
-figcaption .rating {
+.light-text,
+.rating {
     font-size: .85rem;
 }
 
-figcaption .year {
+.light-text {
     color: var(--light-grey);
 }
 
@@ -114,11 +114,14 @@ figcaption .year {
     height: 100%;
 }
 
-.favorite-icon-title {
+.icon-title {
     position: relative;
-    color: yellow;
     font-size: .85rem;
     bottom: 2px;
+    color: yellow;
+}
+
+.favorite-icon {
     margin-left: .35rem;
 }
 
@@ -218,7 +221,7 @@ figcaption .year {
 .main-container {
     padding: 0 3rem;
     width: 80%;
-    max-width: calc(100% - 200px);
+    max-width: calc(100% - 250px);
 }
 
 .main-container section {
@@ -296,7 +299,7 @@ figcaption .year {
     margin-bottom: .1rem;
 }
 
-.top-rated-container .img-container figcaption .year {
+.top-rated-container .img-container .light-text {
     display: block;
     margin-bottom: .5rem;
 }
@@ -316,5 +319,52 @@ figcaption .year {
 /* Sidebar */
 .sidebar {
     width: 30%;
-    max-width: 200px;
+    max-width: 250px;
+}
+
+.sidebar .btn-primary {
+    width: 70%;
+}
+
+.sidebar-title {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.sidebar-title:first-child i {
+    margin-right: .35rem;
+} 
+
+.sidebar-poster {
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-poster img {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    margin-right: .75rem;
+}
+
+.sidebar-poster-description h3 {
+    font-size: .8rem;
+    font-weight: var(--font-weight-text2);
+    margin: 0;
+    margin-bottom: .5rem;
+    color: #fff;
+}
+
+.sidebar-poster-description span {
+    display: block;
+    font-size: .8rem;
+    margin-bottom: .5rem;
+}
+
+.sidebar-poster-description .stars {
+    color: yellow;
+    font-size: .5rem;
+}
+
+.sidebar-poster-description .stars i {
+    margin-right: .25rem;
 }
