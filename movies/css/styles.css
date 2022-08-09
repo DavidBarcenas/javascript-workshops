@@ -329,6 +329,7 @@ figcaption h3 {
 .sidebar-title {
     font-size: 1rem;
     color: #fff;
+    margin-bottom: 1.5rem;
 }
 
 .sidebar-title:first-child i {
