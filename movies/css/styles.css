@@ -71,8 +71,9 @@ figcaption {
 }
 
 figcaption h3 {
-    margin-bottom: .35rem;
+    margin-bottom: .3rem;
     font-weight: var(--font-weight-title2);
+    font-size: 1rem;
 }
 
 figcaption .year,
@@ -88,17 +89,19 @@ figcaption .year {
     background: var(--red);
     color: #fff;
     border: none;
-    padding: .5rem 1rem;
+    padding: .6rem 1rem;
     border-radius: 50px;
+    font-size: .8rem;
 }
 
 .btn-plus {
-    background: rgba(255,255,255, .1);
+    background: rgba(255,255,255, .2);
     color: var(--light-grey);
     width: 35px;
     height: 35px;
     border-radius: 35px;
     margin-left: .25rem;
+    font-size: 1rem;
 }
 
 .flex {
@@ -109,6 +112,14 @@ figcaption .year {
     display: grid;
     grid-template-columns: auto 1fr;
     height: 100%;
+}
+
+.favorite-icon-title {
+    position: relative;
+    color: yellow;
+    font-size: .85rem;
+    bottom: 2px;
+    margin-left: .35rem;
 }
 
 /* Navigation */
@@ -210,16 +221,22 @@ figcaption .year {
     max-width: calc(100% - 200px);
 }
 
+.main-container section {
+    margin-bottom: 2.25rem;
+}
+
 .main-container .section-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 2rem;
 }
 
 .main-container .section-title h2 {
     color: #fff;
     font-weight: var(--font-weight-title2);
     font-size: 1.1rem;
+    margin: 0;
 }
 
 .main-container .section-title a {
@@ -269,9 +286,32 @@ figcaption .year {
     display: none;
 }
 
-.top-rated-container .img-container figcaption
+.top-rated-container .img-container .img-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.top-rated-container .img-container figcaption h3 {
+    margin-bottom: .1rem;
+}
 
+.top-rated-container .img-container figcaption .year {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.top-rated-container .img-container .img-actions .btn-primary {
+    font-size: .65rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.top-rated-container .img-container .img-actions .btn-plus {
+    width: 30px;
+    height: 30px;
+    font-size: .85rem;
+}
 
 /* Sidebar */
 .sidebar {
