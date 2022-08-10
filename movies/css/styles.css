@@ -125,6 +125,10 @@ figcaption h3 {
     margin-left: .35rem;
 }
 
+.hide {
+    display: none;
+}
+
 /* Navigation */
 .nav-container {
     padding: 1rem 3rem;
@@ -368,4 +372,11 @@ figcaption h3 {
 
 .sidebar-poster-description .stars i {
     margin-right: .25rem;
+}
+
+/* Detalle */
+.detail {
+    background: no-repeat center/cover url('https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/sKvQUSyqsFq8e1ts6oo3Xp3dPH2.jpg');
+    width: 100%;
+    height: 70%;
 }
