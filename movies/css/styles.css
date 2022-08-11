@@ -171,6 +171,47 @@ figcaption h3 {
    color: #fff;
 }
 
+/* General Poster */
+.img-container {
+    height: 250px;
+}
+
+.img-container img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-container figcaption .rating {
+    display: none;
+}
+
+.img-container .img-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img-container figcaption h3 {
+    margin-bottom: .1rem;
+}
+
+.img-container .light-text {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.img-container .img-actions .btn-primary {
+    font-size: .65rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.img-container .img-actions .btn-plus {
+    width: 30px;
+    height: 30px;
+    font-size: .85rem;
+}
+
 /* Main section */
 .main {
     width: 100%;
@@ -281,46 +322,6 @@ figcaption h3 {
     grid-gap: 1.5rem;
 }
 
-.top-rated-container .img-container {
-    height: 250px;
-}
-
-.top-rated-container .img-container img {
-    height: 100%;
-    object-fit: cover;
-}
-
-.top-rated-container .img-container figcaption .rating {
-    display: none;
-}
-
-.top-rated-container .img-container .img-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.top-rated-container .img-container figcaption h3 {
-    margin-bottom: .1rem;
-}
-
-.top-rated-container .img-container .light-text {
-    display: block;
-    margin-bottom: .5rem;
-}
-
-.top-rated-container .img-container .img-actions .btn-primary {
-    font-size: .65rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-}
-
-.top-rated-container .img-container .img-actions .btn-plus {
-    width: 30px;
-    height: 30px;
-    font-size: .85rem;
-}
-
 /* Sidebar */
 .sidebar {
     width: 30%;
@@ -400,19 +401,27 @@ figcaption h3 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(14, 18, 28, .9) 50%, transparent);
+    background: linear-gradient(.25turn, rgba(14, 18, 28, 1), transparent);
     z-index: -1;
 }
 
 .detail article h2 {
     font-size: 2.5rem;
     color: #fff;
-    margin-top: 0;
 }
 
 .detail-wrap {
     width: 50%;
     margin-left: 5rem;
+}
+
+.detail .cta-back {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.detail .cta-back i {
+    margin-right: .75rem;
 }
 
 .detail article .light-text {
@@ -450,8 +459,8 @@ figcaption h3 {
 
 .similar-movies {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(6, auto);
     grid-gap: 1.5rem;
     height: 35%;
-    padding: 1.5rem;
+    padding: 1.5rem 0;
 }
