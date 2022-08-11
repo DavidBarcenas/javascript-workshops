@@ -377,16 +377,23 @@ figcaption h3 {
 
 /* Detalle */
 .detail {
-    display: flex;
-    align-items: center;
-    background: no-repeat center/cover url('https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/sKvQUSyqsFq8e1ts6oo3Xp3dPH2.jpg');
-    background-position: right center;
     width: 100%;
-    height: 70%;
-    position: relative;
+    height: 100%;
 }
 
-.detail::after {
+.detail article {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: no-repeat center/cover url('https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/sKvQUSyqsFq8e1ts6oo3Xp3dPH2.jpg');
+    width: 100%;
+    height: 65%;
+    z-index: 2;
+    position: relative;
+    background-position: right center;
+}
+
+.detail article::after {
     content: '';
     position: absolute;
     top: 0;
@@ -394,17 +401,18 @@ figcaption h3 {
     width: 100%;
     height: 100%;
     background: linear-gradient(to right, rgba(14, 18, 28, .9) 50%, transparent);
-}
-
-.detail article {
-    margin-left: 5rem;
-    width: 50%;
-    z-index: 2;
+    z-index: -1;
 }
 
 .detail article h2 {
     font-size: 2.5rem;
     color: #fff;
+    margin-top: 0;
+}
+
+.detail-wrap {
+    width: 50%;
+    margin-left: 5rem;
 }
 
 .detail article .light-text {
@@ -438,4 +446,12 @@ figcaption h3 {
 
 .detail article .categories span:last-of-type {
    border-right: 0;
+}
+
+.similar-movies {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 1.5rem;
+    height: 35%;
+    padding: 1.5rem;
 }
