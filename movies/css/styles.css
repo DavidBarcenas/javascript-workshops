@@ -464,3 +464,19 @@ figcaption h3 {
     height: 35%;
     padding: 1.5rem 0;
 }
+/* See All */
+.see-all {
+    padding: 0 2.75rem;
+    padding-bottom: 3rem;
+}
+
+.see-all-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1.5rem;
+}
+
+.see-all .section-title {
+   margin-bottom: 1rem;
+   color: #fff;
+}
