@@ -6,7 +6,7 @@
     --light-grey: #b2b2b2;
     --dark: #0e121c;
     --red: #fd0016;
-    --yellow: yellow;
+    --yellow: #ecbd65;
     --font-family-text: 'Open Sans', sans-serif;
     --font-weight-title1: 700;
     --font-weight-title2: 600;
@@ -119,7 +119,7 @@ figcaption h3 {
     position: relative;
     font-size: .85rem;
     bottom: 2px;
-    color: yellow;
+    color: var(--yellow);
 }
 
 .favorite-icon {
@@ -315,6 +315,10 @@ figcaption h3 {
     padding: 1rem 1.5rem;
 }
 
+.trending-container .img-container figcaption .rating {
+    display: block;
+}
+
 /* Top Rated Section */
 .top-rated-container {
     display: grid;
@@ -368,7 +372,7 @@ figcaption h3 {
 }
 
 .sidebar-poster-description .stars {
-    color: yellow;
+    color: var(--yellow);
     font-size: .5rem;
 }
 
