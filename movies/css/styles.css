@@ -301,6 +301,7 @@ figcaption h3 {
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-gap: 1.5rem;
+    overflow-x: auto;
 }
 
 

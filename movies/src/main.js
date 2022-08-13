@@ -3,38 +3,38 @@ async function getTrendingMovies() {
   const data = await res.json();
   const movies = data.results;
 
-  movies.slice(6, 8).forEach((movie) => {
-    const movieContainer = document.createElement('figure');
+  movies.slice(10, 12).forEach((movie) => {
+    const movieContainer = createElement('figure');
     movieContainer.classList.add('img-container');
 
-    const movieImg = document.createElement('img');
+    const movieImg = createElement('img');
     movieImg.setAttribute('alt', movie.title);
     movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`);
 
-    const movieDetails = document.createElement('figcaption');
-    const movieDetailsContainer = document.createElement('div');
+    const movieDetails = createElement('figcaption');
+    const movieDetailsContainer = createElement('div');
     movieDetailsContainer.classList.add('img-description');
-    const movieTitle = document.createElement('h3');
+    const movieTitle = createElement('h3');
     movieTitle.textContent = movie.title;
 
-    const movieRelease = document.createElement('span');
+    const movieRelease = createElement('span');
     movieRelease.classList.add('year', 'light-text');
     movieRelease.textContent = movie.release_date;
 
-    const movieRating = document.createElement('span');
+    const movieRating = createElement('span');
     movieRating.classList.add('rating');
     movieRating.textContent = movie.vote_average + ' rating';
 
-    const movieActions = document.createElement('div');
+    const movieActions = createElement('div');
     movieActions.classList.add('img-actions');
 
-    const movieWatchBtn = document.createElement('button');
+    const movieWatchBtn = createElement('button');
     movieWatchBtn.classList.add('btn-primary');
     movieWatchBtn.textContent = 'Watch now';
 
-    const movieAddBtn = document.createElement('button');
+    const movieAddBtn = createElement('button');
     movieAddBtn.classList.add('btn-plus');
-    const movieAddBtnIcon = document.createElement('i');
+    const movieAddBtnIcon = createElement('i');
     movieAddBtnIcon.classList.add('fa-solid', 'fa-plus');
 
     movieAddBtn.appendChild(movieAddBtnIcon);
