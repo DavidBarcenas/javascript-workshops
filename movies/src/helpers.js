@@ -1,15 +1,24 @@
-export function createElement(el) {
+const api = axios.create({
+  baseURL: 'https://api.themoviedb.org/3',
+  headers: {
+    api_key: API_KEY,
+  },
+});
+
+function createElement(el) {
   return document.createElement(el);
 }
 
-export function getYear(date) {
+function getYear(date) {
   return date.slice(0, 4);
 }
 
-export function getRating(votes) {
+function getRating(votes) {
   return votes.toFixed(1);
 }
 
-export function getImage(image) {
+function getImage(image) {
   return `https://image.tmdb.org/t/p/w500/${image}`;
 }
+
+export { api, createElement, getYear, getRating, getImage };
