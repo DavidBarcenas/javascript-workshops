@@ -3,11 +3,12 @@ export function createElement(el) {
 }
 
 export function getYear(date) {
+  console.log(date.slice(0, 4));
   return date.slice(0, 4);
 }
 
 export function getRating(votes) {
-  return votes.float(2);
+  return votes.toFixed(1);
 }
 
 export function getImage(image) {
