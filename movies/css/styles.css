@@ -215,6 +215,7 @@ figcaption h3 {
 /* Main section */
 .main {
     width: 100%;
+    overflow-x: hidden;
 }
 
 .main header {
@@ -224,15 +225,22 @@ figcaption h3 {
     padding: 2rem 3rem;
 }
 
-.main header nav a {
+.main .categories-container {
+    overflow-x: auto;
+    white-space:nowrap;
+    width: 77%;
+}
+
+.main header nav span {
+    display: inline-block;
     font-size: .9rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
     padding-bottom: .2rem;
     margin-right: 1rem;
 }
 
-.main header nav a.active {
+.main header nav span.active {
     color: #fff;
     border-bottom: 3px solid var(--red);
 }

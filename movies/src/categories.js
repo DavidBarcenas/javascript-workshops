@@ -1,5 +1,10 @@
-import { api } from './helpers';
+import { api, createElement } from './helpers.js';
 
 (async () => {
-  const res = await api('genre/movie/list');
+  const { data } = await api('genre/movie/list');
+
+  const navContainer = document.getElementById('categories');
+  const category = createElement('span');
+
+  console.log(data.genres);
 })();
