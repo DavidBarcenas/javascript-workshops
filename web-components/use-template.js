@@ -1,6 +1,7 @@
 class UseTemplate extends HTMLElement {
   constructor() {
     super();
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {
@@ -8,11 +9,11 @@ class UseTemplate extends HTMLElement {
   }
 
   render() {
-    this.appendChild(this.getTemplate().content.cloneNode(true));
+    this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
   }
 
   getTemplate() {
-    const template = document.createElement('template');
+    const template = document.createElement('template'); /*html*/
     template.innerHTML = `
       <section>
         <h2>From JS</h2>
@@ -26,10 +27,10 @@ class UseTemplate extends HTMLElement {
   }
 
   getStyles() {
-    return `
+    return /*html*/ `
       <style>
         h2 {
-          color: blue
+          color: blue;
         }
       </style>
     `;
