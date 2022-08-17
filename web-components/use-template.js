@@ -16,9 +16,13 @@ class UseTemplate extends HTMLElement {
     const template = document.createElement('template'); /*html*/
     template.innerHTML = `
       <section>
-        <h2>From JS</h2>
+        <h2>
+          <slot name="title"></slot>
+        </h2>
         <div>
-          <p>Other text</p>
+          <p>
+            <slot name="text"></slot>
+          </p>
         </div>
       </section>
       ${this.getStyles()}

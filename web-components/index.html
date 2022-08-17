@@ -7,14 +7,11 @@
     <title>Web Components</title>
   </head>
   <body>
-    <h2>Main title 1</h2>
-    <template>
-      <h2>Template Test</h2>
-      <div>
-        <p>This is a template</p>
-      </div>
-    </template>
-    <use-template></use-template>
+    <h2>My custom elements</h2>
+    <use-template>
+      <span slot="title">Slot Title</span>
+      <span slot="text">Slot Text</span>
+    </use-template>
     <my-first-element></my-first-element>
     <script type="module" src="./my-first-element.js"></script>
     <script type="module" src="./use-template.js"></script>
