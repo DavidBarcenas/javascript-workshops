@@ -1,4 +1,8 @@
 class UseTemplate extends HTMLElement {
+  static get observedAttributes() {
+    return ['title', 'text', 'img'];
+  }
+
   constructor() {
     super();
 
@@ -11,10 +15,6 @@ class UseTemplate extends HTMLElement {
 
   render() {
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
-  }
-
-  static get observedAttributes() {
-    return ['title', 'text', 'img'];
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
@@ -41,6 +41,16 @@ class UseTemplate extends HTMLElement {
   getStyles() {
     return /*html*/ `
       <style>
+        :host {
+          display: block;
+          background: teal;
+        }
+        :host(.green) {
+          background: green;
+        }
+        :host([yellow]) {
+          background: yellow;
+        }
         h2 {
           color: blue;
         }
