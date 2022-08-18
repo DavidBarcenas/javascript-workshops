@@ -3,10 +3,6 @@ class UseTemplate extends HTMLElement {
     super();
 
     this.attachShadow({ mode: 'open' });
-
-    this.title = this.getAttribute('title');
-    this.text = this.getAttribute('text');
-    this.img = this.getAttribute('img');
   }
 
   connectedCallback() {
@@ -15,6 +11,16 @@ class UseTemplate extends HTMLElement {
 
   render() {
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
+  }
+
+  static get observedAttributes() {
+    return ['title', 'text', 'img'];
+  }
+
+  attributeChangedCallback(attr, oldValue, newValue) {
+    if (oldValue !== newValue) {
+      this[attr] = newValue;
+    }
   }
 
   getTemplate() {
