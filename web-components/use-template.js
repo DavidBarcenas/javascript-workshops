@@ -1,7 +1,12 @@
 class UseTemplate extends HTMLElement {
   constructor() {
     super();
+
     this.attachShadow({ mode: 'open' });
+
+    this.title = this.getAttribute('title');
+    this.text = this.getAttribute('text');
+    this.img = this.getAttribute('img');
   }
 
   connectedCallback() {
@@ -16,13 +21,10 @@ class UseTemplate extends HTMLElement {
     const template = document.createElement('template'); /*html*/
     template.innerHTML = `
       <section>
-        <h2>
-          <slot name="title"></slot>
-        </h2>
+        <h2>${this.title}</h2>
         <div>
-          <p>
-            <slot name="text"></slot>
-          </p>
+          <p>${this.text}</p>
+          <img src={this.img} alt="Image" />
         </div>
       </section>
       ${this.getStyles()}
