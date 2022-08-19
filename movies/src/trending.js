@@ -1,6 +1,6 @@
 import { api, createElement, getImage, getRating, getYear } from './helpers.js';
 
-(async () => {
+async function getTrends() {
   const { data } = await api('/trending/movie/day');
   const movies = data.results;
 
@@ -57,4 +57,6 @@ import { api, createElement, getImage, getRating, getYear } from './helpers.js';
 
     document.getElementById('trending-section').appendChild(movieContainer);
   });
-})();
+}
+
+export default getTrends;
