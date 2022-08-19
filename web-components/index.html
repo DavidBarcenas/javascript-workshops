@@ -5,10 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Components</title>
+    <style>
+      use-template {
+        --bg: red;
+      }
+    </style>
   </head>
   <body>
     <h2>My custom elements</h2>
-    <use-template title="Test 10" text="This is a text!" img=""></use-template>
+    <use-template>
+      <span slot="title">Prueba Slot</span>
+      <span slot="text">Prueba Slot Text</span>
+    </use-template>
     <use-template class="green" title="Test 10" text="This is a text!" img=""></use-template>
     <use-template yellow title="Test 10" text="This is a text!" img=""></use-template>
     <my-first-element></my-first-element>

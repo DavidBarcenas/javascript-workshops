@@ -42,8 +42,9 @@ class UseTemplate extends HTMLElement {
     return /*html*/ `
       <style>
         :host {
+          --bg: purple;
           display: block;
-          background: teal;
+          background: var(--bg);
         }
         :host(.green) {
           background: green;
