@@ -1,5 +1,6 @@
-import { $ } from './helpers.js';
+import getCategories from './categories.js';
 import getTrends from './trending.js';
+import { $ } from './helpers.js';
 
 const main = $('.main');
 const mainWrap = $('#main-wrap');
@@ -7,6 +8,7 @@ const detail = $('.detail');
 const seeAll = $('.see-all');
 const backButtonDetails = $('.cta-back');
 const searchInput = $('#search');
+const categoriesContainer = $('.categories-container');
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
@@ -16,6 +18,17 @@ searchInput.addEventListener(
   (e) => {
     if (e.key === 'Enter') {
       location.hash = 'search';
+    }
+  },
+  false
+);
+categoriesContainer.addEventListener(
+  'click',
+  (e) => {
+    if (e.target.nodeName?.toLowerCase() === 'span') {
+      removeActiveCategories();
+      document.getElementById(e.target.id).classList.add('active');
+      location.hash = `category=${e.target.id}`;
     }
   },
   false
@@ -39,6 +52,7 @@ function homePage() {
   seeAll.classList.add('hide');
   detail.classList.add('hide');
   main.classList.remove('hide');
+  getCategories();
   getTrends();
 }
 
@@ -61,4 +75,10 @@ function searchPage() {
 function trendsPage() {
   mainWrap.classList.add('hide');
   seeAll.classList.remove('hide');
+}
+
+function removeActiveCategories() {
+  document
+    .querySelectorAll('.categories-container span')
+    .forEach((e) => e.classList.remove('active'));
 }

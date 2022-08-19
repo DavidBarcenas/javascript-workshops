@@ -238,11 +238,18 @@ figcaption h3 {
     padding-right: .5rem;
     padding-bottom: .2rem;
     margin-right: 1rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    border-bottom: 3px solid transparent;
+}
+
+.main header nav span:hover {
+    color: var(--light-grey);
 }
 
 .main header nav span.active {
     color: #fff;
-    border-bottom: 3px solid var(--red);
+    border-bottom-color: var(--red);
 }
 
 .main header form {
