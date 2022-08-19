@@ -1,7 +1,25 @@
+import { $ } from './helpers.js';
 import getTrends from './trending.js';
+
+const main = $('.main');
+const mainWrap = $('#main-wrap');
+const detail = $('.detail');
+const seeAll = $('.see-all');
+const backButtonDetails = $('.cta-back');
+const searchInput = $('#search');
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
+backButtonDetails.addEventListener('click', () => (location.hash = 'home'), false);
+searchInput.addEventListener(
+  'keypress',
+  (e) => {
+    if (e.key === 'Enter') {
+      location.hash = 'search';
+    }
+  },
+  false
+);
 
 function navigator() {
   if (location.hash.startsWith('#trends')) {
@@ -18,22 +36,29 @@ function navigator() {
 }
 
 function homePage() {
-  console.log('Home!!');
+  seeAll.classList.add('hide');
+  detail.classList.add('hide');
+  main.classList.remove('hide');
   getTrends();
 }
 
 function categoryPage() {
-  console.log('CATEGORIES!!!');
+  mainWrap.classList.add('hide');
+  seeAll.classList.remove('hide');
 }
 
 function moviePage() {
-  console.log('DETAILS!!!');
+  main.classList.add('hide');
+  seeAll.classList.add('hide');
+  detail.classList.remove('hide');
 }
 
 function searchPage() {
-  console.log('SEARCH!!!');
+  mainWrap.classList.add('hide');
+  seeAll.classList.remove('hide');
 }
 
 function trendsPage() {
-  console.log('TRENDS!!!');
+  mainWrap.classList.add('hide');
+  seeAll.classList.remove('hide');
 }
