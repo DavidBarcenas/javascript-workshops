@@ -227,7 +227,7 @@ figcaption h3 {
 
 .main .categories-container {
     overflow-x: auto;
-    white-space:nowrap;
+    white-space: nowrap;
     width: 77%;
 }
 
@@ -313,12 +313,20 @@ figcaption h3 {
 
 /* Trending section */
 .trending-container {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-gap: 1.5rem;
+    display: flex;
     overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x;
 }
 
+.trending-container .img-container {
+    min-width: 400px;
+    margin-right: 1.5rem;
+}
+
+.trending-container .img-container:last-child {
+    margin-right: 0;
+}
 
 .trending-container .img-container img {
     object-fit: cover;

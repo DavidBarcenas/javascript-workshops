@@ -1,10 +1,10 @@
-import { api, createElement, getImage, getRating, getYear } from './helpers.js';
+import { $, api, createElement, getImage, getRating, getYear } from './helpers.js';
 
 async function getTrends() {
   const { data } = await api('/trending/movie/day');
   const movies = data.results;
 
-  movies.slice(0, 2).forEach((movie) => {
+  movies.forEach((movie) => {
     const movieContainer = createElement('figure');
     movieContainer.classList.add('img-container');
 
@@ -55,7 +55,7 @@ async function getTrends() {
     movieContainer.appendChild(movieImg);
     movieContainer.appendChild(movieDetails);
 
-    document.getElementById('trending-section').appendChild(movieContainer);
+    $('.trending-container').appendChild(movieContainer);
   });
 }
 
