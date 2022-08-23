@@ -1,5 +1,5 @@
 import getCategories from './categories.js';
-import getTrends from './trending.js';
+import { getTrends } from './movies-service.js';
 import { $ } from './helpers.js';
 
 const main = $('.main');

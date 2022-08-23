@@ -1,4 +1,4 @@
-import { $, createElement, getImage, getRating, getYear } from './helpers';
+import { $, createElement, getImage, getRating, getYear } from './helpers.js';
 
 function Poster(movies, section, useBackdrop = false) {
   movies.forEach((movie) => {
