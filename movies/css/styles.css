@@ -312,7 +312,8 @@ figcaption h3 {
 }
 
 /* Trending section */
-.trending-container {
+.trending-container,
+.top-rated-container {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -344,10 +345,13 @@ figcaption h3 {
 }
 
 /* Top Rated Section */
-.top-rated-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1.5rem;
+.top-rated-container .img-container {
+    min-width: 180px;
+    margin-right: 1rem;
+}
+
+.top-rated-container .img-container:last-child {
+    margin-right: 0;
 }
 
 /* Sidebar */
