@@ -333,6 +333,10 @@ figcaption h3 {
     object-fit: cover;
 }
 
+.trending-container .img-container .img-description {
+    max-width: 65%;
+}
+
 .trending-container figcaption {
     display: flex;
     align-items: flex-end;
@@ -375,12 +379,14 @@ figcaption h3 {
 } 
 
 .sidebar-poster {
+    align-items: stretch;
     margin-bottom: 1.5rem;
+    padding-right: 1rem;
 }
 
 .sidebar-poster img {
     width: 60px;
-    height: 90px;
+    height: 100%;
     object-fit: cover;
     margin-right: .75rem;
 }

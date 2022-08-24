@@ -15,6 +15,9 @@ function sidebar(movies) {
     const movieTitle = createElement('h3');
     movieTitle.textContent = movie.title;
 
+    const movieGenre = createElement('span');
+    movieGenre.textContent = 'Fiction';
+
     const movieRating = createElement('span');
     movieRating.classList.add('light-text');
     movieRating.textContent = getRating(movie.vote_average) + ' rating';
@@ -29,6 +32,7 @@ function sidebar(movies) {
     }
 
     movieDescription.appendChild(movieTitle);
+    movieDescription.appendChild(movieGenre);
     movieDescription.appendChild(movieRating);
     movieDescription.appendChild(movieStars);
 
