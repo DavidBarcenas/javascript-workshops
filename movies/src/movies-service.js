@@ -1,5 +1,6 @@
 import { api, head } from './helpers.js';
 import Poster from './poster.js';
+import sidebar from './sidebar.js';
 
 export async function getTrends() {
   const { data } = await api('/trending/movie/day');
@@ -9,4 +10,5 @@ export async function getTrends() {
 export async function getTopRated() {
   const { data } = await api('/movie/top_rated');
   Poster(head(data.results, 8), '.top-rated-container');
+  sidebar(head(data.results, 5));
 }
