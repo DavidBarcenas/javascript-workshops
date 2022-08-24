@@ -10,5 +10,8 @@ export async function getTrends() {
 export async function getTopRated() {
   const { data } = await api('/movie/top_rated');
   Poster(head(data.results, 8), '.top-rated-container');
+}
+export async function getPopular() {
+  const { data } = await api('/movie/popular');
   sidebar(head(data.results, 5));
 }

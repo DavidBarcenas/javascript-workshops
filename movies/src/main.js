@@ -1,5 +1,5 @@
 import getCategories from './categories.js';
-import { getTopRated, getTrends } from './movies-service.js';
+import { getPopular, getTopRated, getTrends } from './movies-service.js';
 import { $ } from './helpers.js';
 
 const main = $('.main');
@@ -37,6 +37,7 @@ function homePage() {
   getCategories();
   getTrends();
   getTopRated();
+  getPopular();
 }
 
 function categoryPage() {
