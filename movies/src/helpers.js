@@ -22,4 +22,8 @@ function getImage(image) {
   return `https://image.tmdb.org/t/p/w500/${image}`;
 }
 
-export { $, api, createElement, getYear, getRating, getImage };
+function head(list, count) {
+  return list.slice(0, count);
+}
+
+export { $, api, createElement, getYear, getRating, getImage, head };
