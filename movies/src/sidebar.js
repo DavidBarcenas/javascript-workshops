@@ -1,6 +1,6 @@
 import { $, createElement, getImage, getRating } from './helpers.js';
 
-function sidebar(movies) {
+function renderSidebar(movies) {
   movies.forEach((movie) => {
     const movieItem = createElement('li');
     movieItem.classList.add('flex', 'sidebar-poster');
@@ -43,4 +43,4 @@ function sidebar(movies) {
   });
 }
 
-export default sidebar;
+export default renderSidebar;

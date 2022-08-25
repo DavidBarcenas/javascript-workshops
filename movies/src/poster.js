@@ -1,6 +1,6 @@
 import { $, createElement, getImage, getRating, getYear } from './helpers.js';
 
-function Poster(movies, section, useBackdrop = false) {
+function renderPoster(movies, section, useBackdrop = false) {
   movies.forEach((movie) => {
     const image = useBackdrop ? movie.backdrop_path : movie.poster_path;
     const movieContainer = createElement('figure');
@@ -57,4 +57,4 @@ function Poster(movies, section, useBackdrop = false) {
   });
 }
 
-export default Poster;
+export default renderPoster;
