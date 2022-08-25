@@ -3,9 +3,12 @@ import renderPoster from './poster.js';
 import renderSidebar from './sidebar.js';
 import { api, head } from './helpers.js';
 
+let categories = [];
+
 export async function getCategories() {
   const { data } = await api('genre/movie/list');
-  renderCategories(data.genres);
+  categories = data.genres;
+  renderCategories(categories);
 }
 
 export async function getTrends() {
@@ -20,5 +23,5 @@ export async function getTopRated() {
 
 export async function getPopular() {
   const { data } = await api('/movie/popular');
-  renderSidebar(head(data.results, 5));
+  renderSidebar(head(data.results, 5), categories);
 }

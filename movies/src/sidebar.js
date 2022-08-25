@@ -1,6 +1,6 @@
 import { $, createElement, getImage, getRating } from './helpers.js';
 
-function renderSidebar(movies) {
+function renderSidebar(movies, categories) {
   movies.forEach((movie) => {
     const movieItem = createElement('li');
     movieItem.classList.add('flex', 'sidebar-poster');
@@ -14,9 +14,6 @@ function renderSidebar(movies) {
 
     const movieTitle = createElement('h3');
     movieTitle.textContent = movie.title;
-
-    const movieGenre = createElement('span');
-    movieGenre.textContent = 'Fiction';
 
     const movieRating = createElement('span');
     movieRating.classList.add('light-text');
@@ -32,7 +29,15 @@ function renderSidebar(movies) {
     }
 
     movieDescription.appendChild(movieTitle);
-    movieDescription.appendChild(movieGenre);
+
+    categories.forEach((category) => {
+      if (category.id === movie.genre_ids[0]) {
+        const movieGenre = createElement('span');
+        movieGenre.textContent = category.name;
+        movieDescription.appendChild(movieGenre);
+      }
+    });
+
     movieDescription.appendChild(movieRating);
     movieDescription.appendChild(movieStars);
 
