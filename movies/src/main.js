@@ -20,6 +20,8 @@ function navigator() {
     trendsPage();
   } else if (location.hash.startsWith('#search')) {
     searchPage();
+  } else if (location.hash.startsWith('#search')) {
+    searchPage();
   } else if (location.hash.startsWith('#movie=')) {
     moviePage();
   } else if (location.hash.startsWith('#category=')) {

@@ -1,27 +1,23 @@
-import renderCategories from './categories.js';
-import renderPoster from './poster.js';
-import renderSidebar from './sidebar.js';
-import { api, head } from './helpers.js';
+import { api } from './helpers.js';
 
-let categories = [];
-
-export async function getCategories() {
+async function getCategories() {
   const { data } = await api('genre/movie/list');
-  categories = data.genres;
-  renderCategories(categories);
+  return data.genres;
 }
 
-export async function getTrends() {
+async function getTrends() {
   const { data } = await api('/trending/movie/day');
-  renderPoster(head(data.results, 5), '.trending-container', true);
+  return data;
 }
 
-export async function getTopRated() {
+async function getTopRated() {
   const { data } = await api('/movie/top_rated');
-  renderPoster(head(data.results, 8), '.top-rated-container');
+  return data;
 }
 
-export async function getPopular() {
+async function getPopular() {
   const { data } = await api('/movie/popular');
-  renderSidebar(head(data.results, 5), categories);
+  return data;
 }
+
+export { getCategories, getTrends, getTopRated, getPopular };
