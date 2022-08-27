@@ -7,17 +7,17 @@ async function getCategories() {
 
 async function getTrends() {
   const { data } = await api('/trending/movie/day');
-  return data;
+  return data.results;
 }
 
 async function getTopRated() {
   const { data } = await api('/movie/top_rated');
-  return data;
+  return data.results;
 }
 
 async function getPopular() {
   const { data } = await api('/movie/popular');
-  return data;
+  return data.results;
 }
 
 export { getCategories, getTrends, getTopRated, getPopular };

@@ -1,5 +1,8 @@
 import { getCategories, getPopular, getTopRated, getTrends } from './movies-service.js';
-import { $ } from './helpers.js';
+import { $, head } from './helpers.js';
+import renderCategories from './categories.js';
+import renderPoster from './poster.js';
+import renderSidebar from './sidebar.js';
 
 const main = $('.main');
 const mainWrap = $('#main-wrap');
@@ -35,16 +38,21 @@ function homePage() {
   seeAll.classList.add('hide');
   detail.classList.add('hide');
   main.classList.remove('hide');
-  getCategories();
-  getTrends();
-  getTopRated();
-  getPopular();
+
+  Promise.all([getCategories(), getTrends(), getTopRated(), getPopular()]).then(
+    ([categories, trends, top, popular]) => {
+      renderCategories(categories);
+      renderPoster(trends, '.trending-container', true);
+      renderPoster(top, '.top-rated-container');
+      renderSidebar(head(popular, 5), categories);
+    }
+  );
 }
 
 function categoryPage() {
   mainWrap.classList.add('hide');
   seeAll.classList.remove('hide');
-  getCategories();
+  renderCategories(getCategories());
 }
 
 function moviePage() {
