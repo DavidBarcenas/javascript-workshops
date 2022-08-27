@@ -366,6 +366,8 @@ figcaption h3 {
 
 .sidebar .btn-primary {
     width: 70%;
+    display: inline-block;
+    text-align: center;
 }
 
 .sidebar-title {

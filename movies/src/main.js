@@ -43,7 +43,24 @@ function homePage() {
       renderSidebar(head(popular, 5), categories);
 
       if (location.hash.startsWith('#trends')) {
+        mainWrap.classList.add('hide');
+        seeAll.classList.remove('hide');
+        $('.see-all h2').textContent = 'Trending';
         renderPoster(trends, '.see-all-container');
+      }
+
+      if (location.hash.startsWith('#top')) {
+        mainWrap.classList.add('hide');
+        seeAll.classList.remove('hide');
+        $('.see-all h2').textContent = 'Top';
+        renderPoster(top, '.see-all-container');
+      }
+
+      if (location.hash.startsWith('#popular')) {
+        mainWrap.classList.add('hide');
+        seeAll.classList.remove('hide');
+        $('.see-all h2').textContent = 'Popular';
+        renderPoster(popular, '.see-all-container');
       }
     }
   );
