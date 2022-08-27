@@ -19,11 +19,7 @@ searchInput.addEventListener('keypress', (e) => handleSearch(e), false);
 categoriesContainer.addEventListener('click', (e) => handleCategory(e), false);
 
 function navigator() {
-  if (location.hash.startsWith('#trends')) {
-    trendsPage();
-  } else if (location.hash.startsWith('#search')) {
-    searchPage();
-  } else if (location.hash.startsWith('#search')) {
+  if (location.hash.startsWith('#search')) {
     searchPage();
   } else if (location.hash.startsWith('#movie=')) {
     moviePage();
@@ -45,6 +41,10 @@ function homePage() {
       renderPoster(trends, '.trending-container', true);
       renderPoster(top, '.top-rated-container');
       renderSidebar(head(popular, 5), categories);
+
+      if (location.hash.startsWith('#trends')) {
+        renderPoster(trends, '.see-all-container');
+      }
     }
   );
 }
@@ -62,11 +62,6 @@ function moviePage() {
 }
 
 function searchPage() {
-  mainWrap.classList.add('hide');
-  seeAll.classList.remove('hide');
-}
-
-function trendsPage() {
   mainWrap.classList.add('hide');
   seeAll.classList.remove('hide');
 }
