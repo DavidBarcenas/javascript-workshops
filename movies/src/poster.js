@@ -1,6 +1,7 @@
 import { $, createElement, getImage, getRating, getYear } from './helpers.js';
 
 function renderPoster(movies, section, useBackdrop = false) {
+  $(section).innerHTML = '';
   movies.forEach((movie) => {
     const image = useBackdrop ? movie.backdrop_path : movie.poster_path;
     const movieContainer = createElement('figure');

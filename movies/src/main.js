@@ -20,65 +20,65 @@ searchInput.addEventListener('keypress', (e) => handleSearch(e), false);
 categoriesContainer.addEventListener('click', (e) => handleCategory(e), false);
 linkToHome.addEventListener('click', (e) => (location.hash = 'home'), false);
 
-function navigator() {
-  location.hash.startsWith('#movie=') ? moviePage() : homePage();
+async function navigator() {
+  const categories = await getCategories();
+  renderCategories(categories);
+
+  if (location.hash.startsWith('#movie=')) {
+    moviePage();
+  } else if (location.hash.startsWith('#category')) {
+    movieCategoryPage();
+  } else {
+    homePage(categories);
+  }
 }
 
-function homePage() {
+function homePage(categories) {
   seeAll.classList.add('hide');
   detail.classList.add('hide');
   main.classList.remove('hide');
   mainWrap.classList.remove('hide');
 
-  Promise.all([getCategories(), getTrends(), getTopRated(), getPopular()]).then(
-    ([categories, trends, top, popular]) => {
-      renderCategories(categories);
-      renderPoster(trends, '.trending-container', true);
-      renderPoster(top, '.top-rated-container');
-      renderSidebar(head(popular, 5), categories);
+  Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
+    renderPoster(trends, '.trending-container', true);
+    renderPoster(top, '.top-rated-container');
+    renderSidebar(head(popular, 5), categories);
 
-      if (location.hash.startsWith('#trends')) {
-        mainWrap.classList.add('hide');
-        seeAll.classList.remove('hide');
-        $('.see-all h2').textContent = 'Trending';
-        renderPoster(trends, '.see-all-container');
-      }
-
-      if (location.hash.startsWith('#top')) {
-        mainWrap.classList.add('hide');
-        seeAll.classList.remove('hide');
-        $('.see-all h2').textContent = 'Top';
-        renderPoster(top, '.see-all-container');
-      }
-
-      if (location.hash.startsWith('#popular')) {
-        mainWrap.classList.add('hide');
-        seeAll.classList.remove('hide');
-        $('.see-all h2').textContent = 'Popular';
-        renderPoster(popular, '.see-all-container');
-      }
-
-      if (location.hash.startsWith('#search')) {
-        mainWrap.classList.add('hide');
-        seeAll.classList.remove('hide');
-        $('.see-all h2').textContent = 'Search';
-        renderPoster(popular, '.see-all-container');
-      }
-
-      if (location.hash.startsWith('#category')) {
-        mainWrap.classList.add('hide');
-        seeAll.classList.remove('hide');
-        $('.see-all h2').textContent = 'Category';
-        renderPoster(popular, '.see-all-container');
-      }
+    if (location.hash.startsWith('#trends')) {
+      mainWrap.classList.add('hide');
+      seeAll.classList.remove('hide');
+      $('.see-all h2').textContent = 'Trending';
+      renderPoster(trends, '.see-all-container');
     }
-  );
+
+    if (location.hash.startsWith('#top')) {
+      mainWrap.classList.add('hide');
+      seeAll.classList.remove('hide');
+      $('.see-all h2').textContent = 'Top';
+      renderPoster(top, '.see-all-container');
+    }
+
+    if (location.hash.startsWith('#popular')) {
+      mainWrap.classList.add('hide');
+      seeAll.classList.remove('hide');
+      $('.see-all h2').textContent = 'Popular';
+      renderPoster(popular, '.see-all-container');
+    }
+
+    if (location.hash.startsWith('#search')) {
+      mainWrap.classList.add('hide');
+      seeAll.classList.remove('hide');
+      $('.see-all h2').textContent = 'Search';
+      renderPoster(popular, '.see-all-container');
+    }
+  });
 }
 
-function categoryPage() {
+function movieCategoryPage(movies) {
   mainWrap.classList.add('hide');
   seeAll.classList.remove('hide');
-  renderCategories(getCategories());
+  $('.see-all h2').textContent = 'Category';
+  renderPoster(movies, '.see-all-container');
 }
 
 function moviePage() {

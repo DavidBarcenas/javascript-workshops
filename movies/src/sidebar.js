@@ -1,6 +1,9 @@
 import { $, createElement, getImage, getRating } from './helpers.js';
 
 function renderSidebar(movies, categories) {
+  const sidebarContainer = $('.sidebar-list');
+  sidebarContainer.innerHTML = '';
+
   movies.forEach((movie) => {
     const movieItem = createElement('li');
     movieItem.classList.add('flex', 'sidebar-poster');
@@ -44,7 +47,7 @@ function renderSidebar(movies, categories) {
     movieItem.appendChild(movieImg);
     movieItem.appendChild(movieDescription);
 
-    $('.sidebar-list').appendChild(movieItem);
+    sidebarContainer.appendChild(movieItem);
   });
 }
 
