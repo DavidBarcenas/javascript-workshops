@@ -1,6 +1,6 @@
 import { $, createElement } from './helpers.js';
 
-async function renderCategories(categories) {
+function renderCategories(categories) {
   const categoryContainer = $('.categories-container');
   categoryContainer.innerHTML = '';
 

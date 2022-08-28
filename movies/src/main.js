@@ -1,4 +1,10 @@
-import { getCategories, getPopular, getTopRated, getTrends } from './movies-service.js';
+import {
+  getCategories,
+  getMoviesByCategory,
+  getPopular,
+  getTopRated,
+  getTrends,
+} from './movies-service.js';
 import { $, head } from './helpers.js';
 import renderCategories from './categories.js';
 import renderPoster from './poster.js';
@@ -20,24 +26,25 @@ searchInput.addEventListener('keypress', (e) => handleSearch(e), false);
 categoriesContainer.addEventListener('click', (e) => handleCategory(e), false);
 linkToHome.addEventListener('click', (e) => (location.hash = 'home'), false);
 
-async function navigator() {
-  const categories = await getCategories();
-  renderCategories(categories);
+const categories = await getCategories();
+renderCategories(categories);
 
+function navigator() {
   if (location.hash.startsWith('#movie=')) {
     moviePage();
-  } else if (location.hash.startsWith('#category')) {
+  } else if (location.hash.startsWith('#category=')) {
     movieCategoryPage();
   } else {
-    homePage(categories);
+    homePage();
   }
 }
 
-function homePage(categories) {
+function homePage() {
   seeAll.classList.add('hide');
   detail.classList.add('hide');
   main.classList.remove('hide');
   mainWrap.classList.remove('hide');
+  $('.see-all h2').classList.remove('hide');
 
   Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
     renderPoster(trends, '.trending-container', true);
@@ -74,11 +81,14 @@ function homePage(categories) {
   });
 }
 
-function movieCategoryPage(movies) {
+function movieCategoryPage() {
   mainWrap.classList.add('hide');
   seeAll.classList.remove('hide');
-  $('.see-all h2').textContent = 'Category';
-  renderPoster(movies, '.see-all-container');
+  const [_, id] = location.hash.split('=');
+  getMoviesByCategory(id).then((movies) => {
+    $('.see-all h2').classList.add('hide');
+    renderPoster(movies, '.see-all-container');
+  });
 }
 
 function moviePage() {

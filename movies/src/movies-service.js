@@ -20,4 +20,13 @@ async function getPopular() {
   return data.results;
 }
 
-export { getCategories, getTrends, getTopRated, getPopular };
+async function getMoviesByCategory(id) {
+  const { data } = await api('/discover/movie', {
+    params: {
+      with_genres: id,
+    },
+  });
+  return data.results;
+}
+
+export { getCategories, getTrends, getTopRated, getPopular, getMoviesByCategory };
