@@ -29,4 +29,11 @@ async function getMoviesByCategory(id) {
   return data.results;
 }
 
-export { getCategories, getTrends, getTopRated, getPopular, getMoviesByCategory };
+async function getMoviesByQuery(query) {
+  const { data } = await api('/search/movie', {
+    params: { query },
+  });
+  return data.results;
+}
+
+export { getCategories, getTrends, getTopRated, getPopular, getMoviesByCategory, getMoviesByQuery };

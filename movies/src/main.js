@@ -1,6 +1,7 @@
 import {
   getCategories,
   getMoviesByCategory,
+  getMoviesByQuery,
   getPopular,
   getTopRated,
   getTrends,
@@ -34,6 +35,8 @@ function navigator() {
     moviePage();
   } else if (location.hash.startsWith('#category=')) {
     movieCategoryPage();
+  } else if (location.hash.startsWith('#search=')) {
+    searchPage();
   } else {
     homePage();
   }
@@ -71,13 +74,6 @@ function homePage() {
       $('.see-all h2').textContent = 'Popular';
       renderPoster(popular, '.see-all-container');
     }
-
-    if (location.hash.startsWith('#search')) {
-      mainWrap.classList.add('hide');
-      seeAll.classList.remove('hide');
-      $('.see-all h2').textContent = 'Search';
-      renderPoster(popular, '.see-all-container');
-    }
   });
 }
 
@@ -100,6 +96,11 @@ function moviePage() {
 function searchPage() {
   mainWrap.classList.add('hide');
   seeAll.classList.remove('hide');
+  const [_, query] = location.hash.split('=');
+  getMoviesByQuery(query).then((movies) => {
+    $('.see-all h2').textContent = query;
+    renderPoster(movies, '.see-all-container');
+  });
 }
 
 function handleCategory(e) {
@@ -118,6 +119,6 @@ function removeActiveCategories() {
 
 function handleSearch(e) {
   if (e.key === 'Enter') {
-    location.hash = 'search';
+    location.hash = `search=${e.target.value}`;
   }
 }
