@@ -45,13 +45,13 @@ function navigator() {
 }
 
 function homePage() {
-  seeAll.classList.add('hide');
+  /*seeAll.classList.add('hide');
   detail.classList.add('hide');
   main.classList.remove('hide');
   mainWrap.classList.remove('hide');
   $('.see-all h2').classList.remove('hide');
 
-  /*Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
+  Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
     renderPoster(trends, '.trending-container', true, 'w500');
     renderPoster(top, '.top-rated-container');
     renderSidebar(head(popular, 5), categories);
