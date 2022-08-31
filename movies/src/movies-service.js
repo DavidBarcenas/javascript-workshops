@@ -36,4 +36,17 @@ async function getMoviesByQuery(query) {
   return data.results;
 }
 
-export { getCategories, getTrends, getTopRated, getPopular, getMoviesByCategory, getMoviesByQuery };
+async function getMovieById(id) {
+  const { data } = await api(`/movie/${id}`);
+  return data;
+}
+
+export {
+  getCategories,
+  getTrends,
+  getTopRated,
+  getPopular,
+  getMoviesByCategory,
+  getMoviesByQuery,
+  getMovieById,
+};

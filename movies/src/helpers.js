@@ -18,8 +18,8 @@ function getRating(votes) {
   return votes.toFixed(1);
 }
 
-function getImage(image) {
-  return `https://image.tmdb.org/t/p/w500/${image}`;
+function getImage(image, size = 'w300') {
+  return `https://image.tmdb.org/t/p/${size}/${image}`;
 }
 
 function head(list, count) {

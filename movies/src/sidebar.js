@@ -7,6 +7,7 @@ function renderSidebar(movies, categories) {
   movies.forEach((movie) => {
     const movieItem = createElement('li');
     movieItem.classList.add('flex', 'sidebar-poster');
+    movieItem.addEventListener('click', () => (location.hash = `movie=${movie.id}`));
 
     const movieImg = createElement('img');
     movieImg.setAttribute('alt', movie.title);

@@ -1,5 +1,6 @@
 import {
   getCategories,
+  getMovieById,
   getMoviesByCategory,
   getMoviesByQuery,
   getPopular,
@@ -10,19 +11,18 @@ import { $, head } from './helpers.js';
 import renderCategories from './categories.js';
 import renderPoster from './poster.js';
 import renderSidebar from './sidebar.js';
+import details from './details.js';
 
 const main = $('.main');
 const mainWrap = $('#main-wrap');
 const detail = $('.detail');
 const seeAll = $('.see-all');
-const backButtonDetails = $('.cta-back');
 const searchInput = $('#search');
 const categoriesContainer = $('.categories-container');
 const linkToHome = $('.nav-group ul li');
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
-backButtonDetails.addEventListener('click', () => (location.hash = 'home'), false);
 searchInput.addEventListener('keypress', (e) => handleSearch(e), false);
 categoriesContainer.addEventListener('click', (e) => handleCategory(e), false);
 linkToHome.addEventListener('click', (e) => (location.hash = 'home'), false);
@@ -50,7 +50,7 @@ function homePage() {
   $('.see-all h2').classList.remove('hide');
 
   Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
-    renderPoster(trends, '.trending-container', true);
+    renderPoster(trends, '.trending-container', true, 'w500');
     renderPoster(top, '.top-rated-container');
     renderSidebar(head(popular, 5), categories);
 
@@ -91,6 +91,8 @@ function moviePage() {
   main.classList.add('hide');
   seeAll.classList.add('hide');
   detail.classList.remove('hide');
+  const [_, id] = location.hash.split('=');
+  getMovieById(id).then((movie) => details(movie, categories));
 }
 
 function searchPage() {
