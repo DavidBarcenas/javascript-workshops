@@ -19,7 +19,7 @@ function getRating(votes) {
 }
 
 function getImage(image, size = 'w300') {
-  return `https://image.tmdb.org/t/p/${size}/${image}`;
+  return `https://image.tmdb.org/t/p/${size}${image}`;
 }
 
 function head(list, count) {

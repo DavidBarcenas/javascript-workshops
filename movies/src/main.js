@@ -4,6 +4,7 @@ import {
   getMoviesByCategory,
   getMoviesByQuery,
   getPopular,
+  getSimilarMovies,
   getTopRated,
   getTrends,
 } from './movies-service.js';
@@ -11,7 +12,7 @@ import { $, head } from './helpers.js';
 import renderCategories from './categories.js';
 import renderPoster from './poster.js';
 import renderSidebar from './sidebar.js';
-import details from './details.js';
+import renderDetails from './details.js';
 
 const main = $('.main');
 const mainWrap = $('#main-wrap');
@@ -40,6 +41,7 @@ function navigator() {
   } else {
     homePage();
   }
+  window.scrollTo(0, 0);
 }
 
 function homePage() {
@@ -92,7 +94,10 @@ function moviePage() {
   seeAll.classList.add('hide');
   detail.classList.remove('hide');
   const [_, id] = location.hash.split('=');
-  getMovieById(id).then((movie) => details(movie, categories));
+  Promise.all([getMovieById(id), getSimilarMovies(id)]).then(([movie, similarMovies]) => {
+    renderDetails(movie, categories);
+    renderPoster(similarMovies, '.similar-movies');
+  });
 }
 
 function searchPage() {

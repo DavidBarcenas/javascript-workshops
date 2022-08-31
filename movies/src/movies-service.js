@@ -41,6 +41,11 @@ async function getMovieById(id) {
   return data;
 }
 
+async function getSimilarMovies(movieId) {
+  const { data } = await api(`/movie/${movieId}/recommendations`);
+  return data.results;
+}
+
 export {
   getCategories,
   getTrends,
@@ -49,4 +54,5 @@ export {
   getMoviesByCategory,
   getMoviesByQuery,
   getMovieById,
+  getSimilarMovies,
 };

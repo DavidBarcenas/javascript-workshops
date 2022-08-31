@@ -1,8 +1,11 @@
 import { $, createElement, getImage, getRating } from './helpers.js';
 
-function details(movie, categories) {
+function renderDetails(movie, categories) {
+  $('.detail article').style.background = '#0e121c';
+
   const detailContainer = $('.detail-wrap');
   detailContainer.innerHTML = '';
+
   $('.detail article').style.background = `no-repeat center/cover url(${getImage(
     movie.backdrop_path,
     'original'
@@ -62,4 +65,4 @@ function details(movie, categories) {
   detailContainer.appendChild(overview);
 }
 
-export default details;
+export default renderDetails;
