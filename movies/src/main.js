@@ -33,7 +33,7 @@ renderCategories(categories);*/
 
 function navigator() {
   if (location.hash.startsWith('#movie=')) {
-    moviePage();
+    /*moviePage();*/
   } else if (location.hash.startsWith('#category=')) {
     movieCategoryPage();
   } else if (location.hash.startsWith('#search=')) {
