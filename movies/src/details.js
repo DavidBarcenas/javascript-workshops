@@ -6,7 +6,7 @@ function renderDetails(movie, categories) {
   const detailContainer = $('.detail-wrap');
   detailContainer.innerHTML = '';
 
-  $('.detail article').style.background = `no-repeat center/cover url(${getImage(
+  $('.detail article').style.background = `no-repeat top/cover url(${getImage(
     movie.backdrop_path,
     'original'
   )})`;

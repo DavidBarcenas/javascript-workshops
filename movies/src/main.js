@@ -28,8 +28,8 @@ searchInput.addEventListener('keypress', (e) => handleSearch(e), false);
 categoriesContainer.addEventListener('click', (e) => handleCategory(e), false);
 linkToHome.addEventListener('click', (e) => (location.hash = 'home'), false);
 
-const categories = await getCategories();
-renderCategories(categories);
+/*const categories = await getCategories();
+renderCategories(categories);*/
 
 function navigator() {
   if (location.hash.startsWith('#movie=')) {
@@ -51,7 +51,7 @@ function homePage() {
   mainWrap.classList.remove('hide');
   $('.see-all h2').classList.remove('hide');
 
-  Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
+  /*Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
     renderPoster(trends, '.trending-container', true, 'w500');
     renderPoster(top, '.top-rated-container');
     renderSidebar(head(popular, 5), categories);
@@ -76,7 +76,7 @@ function homePage() {
       $('.see-all h2').textContent = 'Popular';
       renderPoster(popular, '.see-all-container');
     }
-  });
+  });*/
 }
 
 function movieCategoryPage() {

@@ -258,6 +258,11 @@ figcaption h3 {
     border-bottom-color: var(--red);
 }
 
+.main header nav .skeleton {
+    height: 12px;
+    margin-right: 1rem;
+}
+
 .main header form {
     position: relative;
 }
@@ -326,8 +331,10 @@ figcaption h3 {
     scroll-snap-type: x;
 }
 
-.trending-container .img-container {
+.trending-container .img-container,
+.trending-container .skeleton {
     min-width: 400px;
+    height: 250px;
     margin-right: 1.5rem;
 }
 
@@ -355,7 +362,8 @@ figcaption h3 {
 }
 
 /* Top Rated Section */
-.top-rated-container .img-container {
+.top-rated-container .img-container,
+.top-rated-container .skeleton  {
     min-width: 180px;
     margin-right: 1rem;
 }
@@ -423,6 +431,32 @@ figcaption h3 {
     margin-right: .25rem;
 }
 
+.sidebar .skeleton {
+    width: 60px;
+    height: 90px;
+    position: relative;
+}
+
+.sidebar .skeleton:after {
+    content: '';
+    display: inline-block;
+    width: 100px;
+    height: 15px;
+    background-color: var(--grey);
+    background-image: linear-gradient(
+		90deg, 
+		rgba(255,255,255, 0), 
+		rgba(255,255,255, 0.2),
+		rgba(255,255,255, 0)
+	);
+    background-size: 40px 100%;
+    background-repeat: no-repeat;
+    background-position: left -40px top 0;
+    animation: shine 1s ease infinite;
+    margin-left: 70px;
+    margin-top: .5rem;
+}
+
 /* Detalle */
 .detail {
     width: 100%;
@@ -454,6 +488,10 @@ figcaption h3 {
 .detail article h2 {
     font-size: 2.5rem;
     color: #fff;
+}
+
+.detail article p {
+    color: var(--light-grey);
 }
 
 .detail-wrap {
@@ -525,4 +563,28 @@ figcaption h3 {
    margin-bottom: 1rem;
    margin-top: 0;
    color: #fff;
+}
+
+/* Loader - Skeleton */
+.skeleton {
+    display: inline-block;
+    background-color: var(--grey);
+    background-image: linear-gradient(
+		90deg, 
+		rgba(255,255,255, 0), 
+		rgba(255,255,255, 0.2),
+		rgba(255,255,255, 0)
+	);
+    background-size: 40px 100%;
+    background-repeat: no-repeat;
+    background-position: left -40px top 0;
+    animation: shine 1s ease infinite;
+    width: 90px;
+    height: 250px;
+}
+
+@keyframes shine {
+	to {
+		background-position: right -40px top 0;
+	}
 }
