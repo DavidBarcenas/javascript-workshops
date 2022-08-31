@@ -161,6 +161,7 @@ figcaption h3 {
 .nav-group ul li {
     font-size: .9rem;
     margin-bottom: 1.35rem;
+    cursor: pointer;
 }
 
 .nav-group ul li i {
@@ -169,6 +170,10 @@ figcaption h3 {
 
 .nav-group ul li.active {
    color: #fff;
+}
+
+.nav-group ul li:not(.active):hover {
+    color: var(--light-grey);
 }
 
 /* General Poster */
@@ -385,6 +390,7 @@ figcaption h3 {
     align-items: stretch;
     margin-bottom: 1.5rem;
     padding-right: 1rem;
+    cursor: pointer;
 }
 
 .sidebar-poster img {
@@ -519,5 +525,6 @@ figcaption h3 {
 
 .see-all .section-title {
    margin-bottom: 1rem;
+   margin-top: 0;
    color: #fff;
 }

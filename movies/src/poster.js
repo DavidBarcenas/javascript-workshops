@@ -6,6 +6,7 @@ function renderPoster(movies, section, useBackdrop = false) {
     const image = useBackdrop ? movie.backdrop_path : movie.poster_path;
     const movieContainer = createElement('figure');
     movieContainer.classList.add('img-container');
+    movieContainer.addEventListener('click', () => (location.hash = `movie=${movie.id}`));
 
     const movieImg = createElement('img');
     movieImg.setAttribute('alt', movie.title);
