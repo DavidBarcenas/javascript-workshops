@@ -4,6 +4,7 @@
 :root {
     --grey: #7d7f84;
     --light-grey: #b2b2b2;
+    --dark-grey: #424242;
     --dark: #0e121c;
     --red: #fd0016;
     --yellow: #ecbd65;
@@ -433,9 +434,11 @@ figcaption h3 {
 }
 
 .sidebar .skeleton {
+    display: block;
     width: 60px;
     height: 90px;
     position: relative;
+    margin-bottom: 1.5rem;
 }
 
 .sidebar .skeleton:after {
@@ -443,7 +446,7 @@ figcaption h3 {
     display: inline-block;
     width: 100px;
     height: 12px;
-    background-color: var(--grey);
+    background-color: var(--dark-grey);
     background-image: linear-gradient(
 		90deg, 
 		rgba(255,255,255, 0), 
@@ -584,7 +587,7 @@ figcaption h3 {
 /* Loader - Skeleton */
 .skeleton {
     display: inline-block;
-    background-color: var(--grey);
+    background-color: var(--dark-grey);
     background-image: linear-gradient(
 		90deg, 
 		rgba(255,255,255, 0), 

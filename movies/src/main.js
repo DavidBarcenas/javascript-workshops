@@ -8,7 +8,7 @@ import {
   getTopRated,
   getTrends,
 } from './movies-service.js';
-import { $, head } from './helpers.js';
+import { $, createElement, head } from './helpers.js';
 import renderCategories from './categories.js';
 import renderPoster from './poster.js';
 import renderSidebar from './sidebar.js';
@@ -55,8 +55,9 @@ function homePage() {
 
   renderSkeleton('.trending-container', 3);
   renderSkeleton('.top-rated-container', 5);
+  renderSkeleton('.sidebar-list', 5);
 
-  Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
+  /*Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
     renderPoster(trends, '.trending-container', true, 'w500');
     renderPoster(top, '.top-rated-container');
     renderSidebar(head(popular, 5), categories);
@@ -81,7 +82,7 @@ function homePage() {
       $('.see-all h2').textContent = 'Popular';
       renderPoster(popular, '.see-all-container');
     }
-  });
+  });*/
 }
 
 function movieCategoryPage() {

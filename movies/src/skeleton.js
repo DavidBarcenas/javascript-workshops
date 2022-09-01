@@ -1,6 +1,6 @@
 import { $, createElement } from './helpers.js';
 
-function renderSkeleton(section, totalItems) {
+function renderSkeleton(section, totalItems, wrapper) {
   let range = {
     from: 1,
     to: totalItems,
@@ -24,7 +24,12 @@ function renderSkeleton(section, totalItems) {
   Array.from(range).forEach(() => {
     const skeleton = createElement('div');
     skeleton.classList.add('skeleton');
-    $(section).appendChild(skeleton);
+    if (wrapper) {
+      wrapper.appendChild(skeleton);
+      $(section).appendChild(wrapper);
+    } else {
+      $(section).appendChild(skeleton);
+    }
   });
 }
 
