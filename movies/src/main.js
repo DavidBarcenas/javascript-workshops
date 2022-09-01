@@ -13,6 +13,7 @@ import renderCategories from './categories.js';
 import renderPoster from './poster.js';
 import renderSidebar from './sidebar.js';
 import renderDetails from './details.js';
+import renderSkeleton from './skeleton.js';
 
 const main = $('.main');
 const mainWrap = $('#main-wrap');
@@ -28,12 +29,13 @@ searchInput.addEventListener('keypress', (e) => handleSearch(e), false);
 categoriesContainer.addEventListener('click', (e) => handleCategory(e), false);
 linkToHome.addEventListener('click', (e) => (location.hash = 'home'), false);
 
-/*const categories = await getCategories();
-renderCategories(categories);*/
+renderSkeleton('.categories-container', 10);
+const categories = await getCategories();
+renderCategories(categories);
 
 function navigator() {
   if (location.hash.startsWith('#movie=')) {
-    /*moviePage();*/
+    moviePage();
   } else if (location.hash.startsWith('#category=')) {
     movieCategoryPage();
   } else if (location.hash.startsWith('#search=')) {
@@ -45,11 +47,14 @@ function navigator() {
 }
 
 function homePage() {
-  /*seeAll.classList.add('hide');
+  seeAll.classList.add('hide');
   detail.classList.add('hide');
   main.classList.remove('hide');
   mainWrap.classList.remove('hide');
   $('.see-all h2').classList.remove('hide');
+
+  renderSkeleton('.trending-container', 3);
+  renderSkeleton('.top-rated-container', 5);
 
   Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
     renderPoster(trends, '.trending-container', true, 'w500');
@@ -76,7 +81,7 @@ function homePage() {
       $('.see-all h2').textContent = 'Popular';
       renderPoster(popular, '.see-all-container');
     }
-  });*/
+  });
 }
 
 function movieCategoryPage() {
