@@ -1,17 +1,21 @@
 import { $, createElement, createObserver, getImage, getRating, getYear } from './helpers.js';
+const imageDefault =
+  'https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-no-thumbnail-image-placeholder-for-forums-blogs-and-websites.jpg';
 
 function renderPoster(movies, section, useBackdrop = false, imgSize = 'w300') {
-  const lazyload = createObserver(section);
+  const lazyload = createObserver();
   $(section).innerHTML = '';
+
   movies.forEach((movie) => {
     const image = useBackdrop ? movie.backdrop_path : movie.poster_path;
+
     const movieContainer = createElement('figure');
     movieContainer.classList.add('img-container');
     movieContainer.addEventListener('click', () => (location.hash = `movie=${movie.id}`));
 
     const movieImg = createElement('img');
     movieImg.setAttribute('alt', movie.title);
-    movieImg.setAttribute('data-img', getImage(image, imgSize));
+    movieImg.setAttribute('data-img', image ? getImage(image, imgSize) : imageDefault);
     lazyload.observe(movieImg);
 
     const movieDetails = createElement('figcaption');

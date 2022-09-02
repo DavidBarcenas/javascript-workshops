@@ -26,21 +26,15 @@ function head(list, count) {
   return list.slice(0, count);
 }
 
-function createObserver(parent) {
-  const options = {
-    root: document.querySelector(parent),
-    rootMargin: '0px',
-    threshold: 0.25,
-  };
-
+function createObserver() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const urlImg = entry.target.getAttribute('data-img');
-        entry.target.setAttribute('src', urlImg);
+        const lazyImage = entry.target;
+        lazyImage.src = lazyImage.dataset.img;
       }
     });
-  }, options);
+  });
   return observer;
 }
 

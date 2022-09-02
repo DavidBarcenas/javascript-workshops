@@ -562,7 +562,7 @@ figcaption h3 {
 
 .similar-movies {
     display: grid;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(6, minmax(174px, 1fr));
     grid-gap: 1.5rem;
     padding: 1.5rem;
 }
@@ -574,7 +574,7 @@ figcaption h3 {
 
 .see-all-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, minmax(168px, 1fr));
     grid-gap: 1.5rem;
 }
 
