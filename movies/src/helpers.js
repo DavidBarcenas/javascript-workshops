@@ -26,4 +26,22 @@ function head(list, count) {
   return list.slice(0, count);
 }
 
-export { $, api, createElement, getYear, getRating, getImage, head };
+function createObserver(parent) {
+  const options = {
+    root: document.querySelector(parent),
+    rootMargin: '0px',
+    threshold: 0.25,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const urlImg = entry.target.getAttribute('data-img');
+        entry.target.setAttribute('src', urlImg);
+      }
+    });
+  }, options);
+  return observer;
+}
+
+export { $, api, createElement, getYear, getRating, getImage, head, createObserver };

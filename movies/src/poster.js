@@ -1,6 +1,7 @@
-import { $, createElement, getImage, getRating, getYear } from './helpers.js';
+import { $, createElement, createObserver, getImage, getRating, getYear } from './helpers.js';
 
 function renderPoster(movies, section, useBackdrop = false, imgSize = 'w300') {
+  const lazyload = createObserver(section);
   $(section).innerHTML = '';
   movies.forEach((movie) => {
     const image = useBackdrop ? movie.backdrop_path : movie.poster_path;
@@ -10,7 +11,8 @@ function renderPoster(movies, section, useBackdrop = false, imgSize = 'w300') {
 
     const movieImg = createElement('img');
     movieImg.setAttribute('alt', movie.title);
-    movieImg.setAttribute('src', getImage(image, imgSize));
+    movieImg.setAttribute('data-img', getImage(image, imgSize));
+    lazyload.observe(movieImg);
 
     const movieDetails = createElement('figcaption');
     const movieDetailsContainer = createElement('div');
