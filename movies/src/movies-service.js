@@ -20,10 +20,11 @@ async function getPopular() {
   return data.results;
 }
 
-async function getMoviesByCategory(id) {
+async function getMoviesByCategory(id, page) {
   const { data } = await api('/discover/movie', {
     params: {
       with_genres: id,
+      page,
     },
   });
   return data.results;

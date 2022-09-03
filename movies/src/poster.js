@@ -4,7 +4,7 @@ const imageDefault =
 
 function renderPoster(movies, section, useBackdrop = false, imgSize = 'w300') {
   const lazyload = createObserver();
-  $(section).innerHTML = '';
+  // $(section).innerHTML = '';
 
   movies.forEach((movie) => {
     const image = useBackdrop ? movie.backdrop_path : movie.poster_path;
