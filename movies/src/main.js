@@ -21,6 +21,7 @@ const seeAll = $('.see-all');
 const searchInput = $('#search');
 const categoriesContainer = $('.categories-container');
 const linkToHome = $('.nav-group ul li');
+let currentPage = 1;
 
 /* delete button */
 const loadMoreBtn = createElement('button');
@@ -28,7 +29,7 @@ loadMoreBtn.classList.add('btn-primary');
 loadMoreBtn.textContent = 'Load';
 
 loadMoreBtn.addEventListener('click', () => {
-  movieCategoryPage().render();
+  movieCategoryPage().renderMovies();
 });
 
 window.addEventListener('DOMContentLoaded', navigator, false);
@@ -41,10 +42,12 @@ const categories = await getCategories();
 renderCategories(categories);
 
 function navigator() {
+  currentPage = 1;
   if (location.hash.startsWith('#movie=')) {
     moviePage();
   } else if (location.hash.startsWith('#category=')) {
-    movieCategoryPage().render();
+    movieCategoryPage().show();
+    movieCategoryPage().renderMovies();
   } else if (location.hash.startsWith('#search=')) {
     searchPage();
   } else {
@@ -89,20 +92,19 @@ function homePage() {
 }
 
 function movieCategoryPage() {
-  mainWrap.classList.add('hide');
-  seeAll.classList.remove('hide');
-  $('.see-all-container').innerHTML = '';
-  let currentPage = 1;
-
   return {
-    render: () => {
+    show: () => {
+      mainWrap.classList.add('hide');
+      seeAll.classList.remove('hide');
+      $('.see-all-container').innerHTML = '';
+    },
+    renderMovies: () => {
       const [_, id] = location.hash.split('=');
       getMoviesByCategory(id, currentPage).then((movies) => {
         $('.see-all h2').classList.add('hide');
         renderPoster(movies, '.see-all-container');
         $('.see-all').appendChild(loadMoreBtn);
-        currentPage++;
-        console.log(currentPage);
+        currentPage = currentPage + 1;
       });
     },
   };
