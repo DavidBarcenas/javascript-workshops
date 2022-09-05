@@ -29,7 +29,7 @@ loadMoreBtn.classList.add('btn-primary');
 loadMoreBtn.textContent = 'Load';
 
 loadMoreBtn.addEventListener('click', () => {
-  movieCategoryPage().renderMovies();
+  movieCategoryPage().render();
 });
 
 window.addEventListener('DOMContentLoaded', navigator, false);
@@ -46,8 +46,8 @@ function navigator() {
   if (location.hash.startsWith('#movie=')) {
     moviePage();
   } else if (location.hash.startsWith('#category=')) {
-    movieCategoryPage().show();
-    movieCategoryPage().renderMovies();
+    movieCategoryPage().cleanSection();
+    movieCategoryPage().render();
   } else if (location.hash.startsWith('#search=')) {
     searchPage();
   } else {
@@ -93,12 +93,12 @@ function homePage() {
 
 function movieCategoryPage() {
   return {
-    show: () => {
+    cleanSection: () => {
       mainWrap.classList.add('hide');
       seeAll.classList.remove('hide');
       $('.see-all-container').innerHTML = '';
     },
-    renderMovies: () => {
+    render: () => {
       const [_, id] = location.hash.split('=');
       getMoviesByCategory(id, currentPage).then((movies) => {
         $('.see-all h2').classList.add('hide');
@@ -111,14 +111,20 @@ function movieCategoryPage() {
 }
 
 function moviePage() {
-  main.classList.add('hide');
-  seeAll.classList.add('hide');
-  detail.classList.remove('hide');
-  const [_, id] = location.hash.split('=');
-  Promise.all([getMovieById(id), getSimilarMovies(id)]).then(([movie, similarMovies]) => {
-    renderDetails(movie, categories);
-    renderPoster(similarMovies, '.similar-movies');
-  });
+  return {
+    cleanSection: () => {
+      main.classList.add('hide');
+      seeAll.classList.add('hide');
+      detail.classList.remove('hide');
+    },
+    render: () => {
+      const [_, id] = location.hash.split('=');
+      Promise.all([getMovieById(id), getSimilarMovies(id)]).then(([movie, similarMovies]) => {
+        renderDetails(movie, categories);
+        renderPoster(similarMovies, '.similar-movies');
+      });
+    },
+  };
 }
 
 function searchPage() {
