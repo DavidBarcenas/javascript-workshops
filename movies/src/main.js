@@ -1,3 +1,8 @@
+import { $, head } from './helpers.js';
+import renderCategories from './categories.js';
+import renderPoster from './poster.js';
+import renderSidebar from './sidebar.js';
+import renderDetails from './details.js';
 import {
   getCategories,
   getMovieById,
@@ -8,11 +13,6 @@ import {
   getTopRated,
   getTrends,
 } from './movies-service.js';
-import { $, createElement, head } from './helpers.js';
-import renderCategories from './categories.js';
-import renderPoster from './poster.js';
-import renderSidebar from './sidebar.js';
-import renderDetails from './details.js';
 
 const main = $('.main');
 const mainWrap = $('#main-wrap');
@@ -22,19 +22,10 @@ const searchInput = $('#search');
 const categoriesContainer = $('.categories-container');
 const linkToHome = $('.nav-group ul li');
 let currentPage = 1;
-
-/* delete button */
-const loadMoreBtn = createElement('button');
-loadMoreBtn.classList.add('btn-primary');
-loadMoreBtn.textContent = 'Load';
-
-loadMoreBtn.addEventListener('click', () => {
-  movieCategoryPage().render();
-});
+let getPaginatedMovies;
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
-document.addEventListener('scroll', infiniteScroll, false);
 searchInput.addEventListener('keypress', (e) => handleSearch(e), false);
 categoriesContainer.addEventListener('click', (e) => handleCategory(e), false);
 linkToHome.addEventListener('click', (e) => (location.hash = 'home'), false);
@@ -44,17 +35,22 @@ renderCategories(categories);
 
 function navigator() {
   currentPage = 1;
+  removeScrollListener();
+
   if (location.hash.startsWith('#movie=')) {
     moviePage();
   } else if (location.hash.startsWith('#category=')) {
     movieCategoryPage().cleanSection();
     movieCategoryPage().render();
+    getPaginatedMovies = movieCategoryPage().render;
   } else if (location.hash.startsWith('#search=')) {
     searchPage();
   } else {
     homePage();
   }
+
   window.scrollTo(0, 0);
+  addScrollListener();
 }
 
 function homePage() {
@@ -104,7 +100,6 @@ function movieCategoryPage() {
       getMoviesByCategory(id, currentPage).then((movies) => {
         $('.see-all h2').classList.add('hide');
         renderPoster(movies, '.see-all-container');
-        $('.see-all').appendChild(loadMoreBtn);
         currentPage = currentPage + 1;
       });
     },
@@ -162,7 +157,19 @@ function infiniteScroll() {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 10;
   if (scrollIsBottom) {
-    //movieCategoryPage().render();
-    console.log('here');
+    getPaginatedMovies();
+  }
+}
+
+function removeScrollListener() {
+  if (getPaginatedMovies) {
+    window.removeEventListener('scroll', infiniteScroll);
+    getPaginatedMovies = undefined;
+  }
+}
+
+function addScrollListener() {
+  if (getPaginatedMovies) {
+    window.addEventListener('scroll', infiniteScroll, { passive: false });
   }
 }
