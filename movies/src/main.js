@@ -34,6 +34,7 @@ loadMoreBtn.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
+document.addEventListener('scroll', infiniteScroll, false);
 searchInput.addEventListener('keypress', (e) => handleSearch(e), false);
 categoriesContainer.addEventListener('click', (e) => handleCategory(e), false);
 linkToHome.addEventListener('click', (e) => (location.hash = 'home'), false);
@@ -154,5 +155,14 @@ function removeActiveCategories() {
 function handleSearch(e) {
   if (e.key === 'Enter') {
     location.hash = `search=${e.target.value}`;
+  }
+}
+
+function infiniteScroll() {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 10;
+  if (scrollIsBottom) {
+    //movieCategoryPage().render();
+    console.log('here');
   }
 }
