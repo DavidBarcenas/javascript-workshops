@@ -22,6 +22,7 @@ const searchInput = $('#search');
 const categoriesContainer = $('.categories-container');
 const linkToHome = $('.nav-group ul li');
 let currentPage = 1;
+let maxPage = 0;
 let getPaginatedMovies;
 
 window.addEventListener('DOMContentLoaded', navigator, false);
@@ -59,6 +60,8 @@ function homePage() {
   main.classList.remove('hide');
   mainWrap.classList.remove('hide');
   $('.see-all h2').classList.remove('hide');
+  $('.trending-container').innerHTML = '';
+  $('.top-rated-container').innerHTML = '';
 
   Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
     renderPoster(trends, '.trending-container', true, 'w500');
@@ -156,7 +159,8 @@ function handleSearch(e) {
 function infiniteScroll() {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 10;
-  if (scrollIsBottom) {
+  const hasMorePages = currentPage < maxPage;
+  if (scrollIsBottom && hasMorePages) {
     getPaginatedMovies();
   }
 }
