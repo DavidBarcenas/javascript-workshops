@@ -110,20 +110,16 @@ function movieCategoryPage() {
 }
 
 function moviePage() {
-  return {
-    cleanSection: () => {
-      main.classList.add('hide');
-      seeAll.classList.add('hide');
-      detail.classList.remove('hide');
-    },
-    render: () => {
-      const [_, id] = location.hash.split('=');
-      Promise.all([getMovieById(id), getSimilarMovies(id)]).then(([movie, similarMovies]) => {
-        renderDetails(movie, categories);
-        renderPoster(similarMovies, '.similar-movies');
-      });
-    },
-  };
+  main.classList.add('hide');
+  seeAll.classList.add('hide');
+  detail.classList.remove('hide');
+  $('.similar-movies').innerHTML = '';
+
+  const [_, id] = location.hash.split('=');
+  Promise.all([getMovieById(id), getSimilarMovies(id)]).then(([movie, similarMovies]) => {
+    renderDetails(movie, categories);
+    renderPoster(similarMovies, '.similar-movies');
+  });
 }
 
 function searchPage() {
