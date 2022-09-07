@@ -186,6 +186,7 @@ figcaption h3 {
 .img-container img {
     height: 100%;
     object-fit: cover;
+    object-position: top;
 }
 
 .img-container figcaption .rating {

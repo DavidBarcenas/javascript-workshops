@@ -62,6 +62,7 @@ function homePage() {
   $('.see-all h2').classList.remove('hide');
   $('.trending-container').innerHTML = '';
   $('.top-rated-container').innerHTML = '';
+  $('.see-all-container').innerHTML = '';
 
   Promise.all([getTrends(), getTopRated(), getPopular()]).then(([trends, top, popular]) => {
     renderPoster(trends, '.trending-container', true, 'w500');
@@ -78,7 +79,7 @@ function homePage() {
     if (location.hash.startsWith('#top')) {
       mainWrap.classList.add('hide');
       seeAll.classList.remove('hide');
-      $('.see-all h2').textContent = 'Top';
+      $('.see-all h2').textContent = 'Top rated';
       renderPoster(top, '.see-all-container');
     }
 
@@ -125,6 +126,8 @@ function moviePage() {
 function searchPage() {
   mainWrap.classList.add('hide');
   seeAll.classList.remove('hide');
+  $('.see-all-container').innerHTML = '';
+
   const [_, query] = location.hash.split('=');
   getMoviesByQuery(query).then((movies) => {
     $('.see-all h2').textContent = query;
